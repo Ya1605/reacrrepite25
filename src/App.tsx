@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import useToggle from "./hookToggle/useToggle";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+
+//useToggle - custom React hook that allows a component to toggle
+// a value between true and false
+    //import { useState } from "react"
+    //
+    //export default App;
+
+
+
+//2. usePrevious - hook that allows a component to keep track of
+// the previous value of a variable
+
+
+
+const App: React.FC = () => {
+const [isToggled, toggle] = useToggle();
+
+  return(
+<div>
+  <p> The togle is {isToggled ? 'on' : 'OFF'}</p>
+  <button onClick={toggle}> Toggle </button>
+</div>
+
+  )
+};
 
 export default App;
