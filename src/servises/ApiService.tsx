@@ -1,6 +1,7 @@
 import axios, {AxiosResponse} from "axios";
 import {IUserModel} from "../model/IUserModel";
 import {PostModel} from "../model/PostModel";
+import {CommentsModel} from "../model/CommentsModel";
 
 let axiosInstance = axios.create({
 
@@ -32,8 +33,26 @@ const postApiServise = {
     }
 };
 
+const commentApiServise = {
+    getAllComments():Promise<AxiosResponse<CommentsModel[]>> {
+    return axiosInstance.get(`/comments`);
+    },
+
+    getAllCommentsByid:async (id:number):Promise<AxiosResponse<CommentsModel>> =>{
+    const comments = await axiosInstance.get('/comments');
+    console.log(comments);
+    return comments;}
+}
+
+
+
+
+
+
+
 export {
 
     userApiServise,
     postApiServise,
+    commentApiServise,
 }
