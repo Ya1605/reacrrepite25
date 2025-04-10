@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {userApiServise} from "../servises/ApiService";
 import {FC} from "react";
 import {IUserModel} from "../model/IUserModel";
+import UserComponent from "./UserComponent";
 
 
 const UsersComponent:FC = () => {
@@ -16,12 +17,8 @@ const UsersComponent:FC = () => {
 
     return (
         <div>
-            {user.map(value =>
-                <div key={value.id}>
-               <ul>
-                   <li>{value.name}</li>
-                   <li>{value.email}</li>
-               </ul></div>)}
+            {user.map(user => <UserComponent user={user.id} user={user}/>)}
+
         </div>
     );
 };
