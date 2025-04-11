@@ -1,30 +1,22 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {FC,} from 'react';
 import {PostModel} from "../model/PostModel";
-import {postApiServise} from "../servises/ApiService";
+import PostComponent from "./PostComponent";
 
-const PostsComponent:FC = () => {
-    const [posts, setPost] = useState<PostModel[]>([]);
-    useEffect(() => {
-        postApiServise.getAllPosts().then(value => {
-           console.log(value);
-            setPost(value.data);
-        })
-    }, []);
+interface IProps {
+    posts: PostModel[]
+}
 
+const PostsComponent: FC<IProps> = ({posts}) => {
 
 
     return (
         <div>
-            <h1>Posts</h1>
-            {posts.map(post => (
-                <div key={post.id}>
-                    <h2>{post.title}</h2>
-                    <p>{post.body}</p>
-                </div>
-            ))}
+            {
+                posts.map(post => <PostComponent key={post.id} post={post}/>)
+            }
         </div>
     );
-
 };
 
 export default PostsComponent;
+

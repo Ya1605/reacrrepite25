@@ -8,7 +8,7 @@ import UserComponent from "./UserComponent";
 const UsersComponent:FC = () => {
 
 
-    const [user, setUser] = useState <IUserModel[]>([]);
+    const [users, setUser] = useState <IUserModel[]>([]);
     useEffect(() => {
         userApiServise.getAllUsers().then(value => {
             setUser(value.data);
@@ -17,7 +17,7 @@ const UsersComponent:FC = () => {
 
     return (
         <div>
-            {user.map(user => <UserComponent user={user.id} user={user}/>)}
+            {users.map(user => <UserComponent key = {user.id} user={user}></UserComponent>)}
 
         </div>
     );

@@ -30,7 +30,12 @@ const postApiServise = {
         const post = await axiosInstance.get('/posts' + id);
         console.log(post);
         return post;
-    }
+    },
+    getPostsOfUser:async (userId:string):Promise<AxiosResponse<PostModel>> =>{
+        const posts = await axiosInstance.get(`/users/${userId}/posts`);
+        console.log(posts);
+        return posts;
+}
 };
 
 const commentApiServise = {
